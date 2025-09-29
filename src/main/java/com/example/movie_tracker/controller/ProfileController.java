@@ -1,7 +1,7 @@
-package com.example.movietracker.controller;
+package com.example.movie_tracker.controller;
 
-import com.example.movietracker.service.FavoriteService;
-import com.example.movietracker.service.UserService;
+import com.example.movie_tracker.service.FavoriteService;
+import com.example.movie_tracker.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

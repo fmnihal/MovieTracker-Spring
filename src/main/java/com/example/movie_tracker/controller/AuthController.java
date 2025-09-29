@@ -1,10 +1,9 @@
-package com.example.movietracker.controller;
+package com.example.movie_tracker.controller;
 
+import com.example.movie_tracker.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import com.example.movietracker.service.UserService;
 
 @Controller
 public class AuthController {

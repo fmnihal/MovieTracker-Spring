@@ -1,63 +1,45 @@
-package com.example.movietracker.model;
+package com.example.movie_tracker.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "movies", uniqueConstraints = @UniqueConstraint(columnNames = "external_id"))
-public class Movie {
+@Table(name = "favorites", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id","movie_id"}))
+public class Favorite {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "external_id", unique = true)
-    private String externalId; // e.g., TMDB id (optional)
+    @ManyToOne(optional=false)
+    @JoinColumn(name="user_id")
+    private User user;
 
-    private String title;
+    @ManyToOne(optional=false)
+    @JoinColumn(name="movie_id")
+    private Movie movie;
 
-    @Column(length = 2000)
-    private String overview;
+    public Favorite() {}
 
-    private String posterUrl;
-
-    private String releaseDate;
-
-    public Movie() {}
-
-    public Movie(String externalId, String title, String overview, String posterUrl, String releaseDate) {
-        this.externalId = externalId;
-        this.title = title;
-        this.overview = overview;
-        this.posterUrl = posterUrl;
-        this.releaseDate = releaseDate;
+    public Favorite(User user, Movie movie) {
+        this.user = user;
+        this.movie = movie;
     }
 
-    // getters & setters
-
+    // getters/setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getExternalId() { return externalId; }
-    public void setExternalId(String externalId) { this.externalId = externalId; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-
-    public String getOverview() { return overview; }
-    public void setOverview(String overview) { this.overview = overview; }
-
-    public String getPosterUrl() { return posterUrl; }
-    public void setPosterUrl(String posterUrl) { this.posterUrl = posterUrl; }
-
-    public String getReleaseDate() { return releaseDate; }
-    public void setReleaseDate(String releaseDate) { this.releaseDate = releaseDate; }
+    public Movie getMovie() { return movie; }
+    public void setMovie(Movie movie) { this.movie = movie; }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Movie)) return false;
-        Movie other = (Movie) o;
+        if (!(o instanceof Favorite)) return false;
+        Favorite other = (Favorite) o;
         return Objects.equals(id, other.id);
     }
 

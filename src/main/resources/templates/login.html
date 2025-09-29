@@ -21,8 +21,11 @@
                     <button class="btn btn-primary">Login</button>
                 </div>
             </form>
-            <div th:if="${error}" class="alert alert-danger mt-3">Login failed</div>
-            <div th:if="${logout}" class="alert alert-success mt-3">You have been logged out</div>
+<!--            <div th:if="${error}" class="alert alert-danger mt-3">Login failed</div>-->
+<!--            <div th:if="${logout}" class="alert alert-success mt-3">You have been logged out</div>-->
+            <div th:if="${param.error}" class="alert alert-danger mt-3">Login failed</div>
+            <div th:if="${param.logout}" class="alert alert-success mt-3">You have been logged out</div>
+
         </div>
     </div>
 </div>

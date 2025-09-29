@@ -1,6 +1,6 @@
-package com.example.movietracker.controller;
+package com.example.movie_tracker.controller;
 
-import com.example.movietracker.service.MovieService;
+import com.example.movie_tracker.service.MovieService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

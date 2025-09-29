@@ -1,10 +1,10 @@
-package com.example.movietracker.service;
+package com.example.movie_tracker.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.movietracker.model.*;
-import com.example.movietracker.repository.*;
+import com.example.movie_tracker.model.*;
+import com.example.movie_tracker.repository.*;
 
 import java.util.List;
 

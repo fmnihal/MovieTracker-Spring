@@ -1,13 +1,14 @@
-package com.example.movietracker.service;
+package com.example.movie_tracker.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.movietracker.repository.UserRepository;
-import com.example.movietracker.model.User;
+import com.example.movie_tracker.repository.UserRepository;
+import com.example.movie_tracker.model.User;
 
 import java.util.List;
 
@@ -18,9 +19,10 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository repo, PasswordEncoder encoder) {
-        this.userRepository = repo;
-        this.passwordEncoder = encoder;
+    @Autowired
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User register(String username, String rawPassword) {

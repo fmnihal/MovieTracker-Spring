@@ -1,9 +1,9 @@
-package com.example.movietracker.repository;
+package com.example.movie_tracker.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.movietracker.model.Favorite;
-import com.example.movietracker.model.User;
-import com.example.movietracker.model.Movie;
+import com.example.movie_tracker.model.Favorite;
+import com.example.movie_tracker.model.User;
+import com.example.movie_tracker.model.Movie;
 import java.util.List;
 import java.util.Optional;
 

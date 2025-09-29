@@ -1,7 +1,7 @@
-package com.example.movietracker.service;
+package com.example.movie_tracker.service;
 
-import com.example.movietracker.model.Movie;
-import com.example.movietracker.repository.MovieRepository;
+import com.example.movie_tracker.model.Movie;
+import com.example.movie_tracker.repository.MovieRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

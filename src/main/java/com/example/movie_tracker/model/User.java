@@ -1,4 +1,4 @@
-package com.example.movietracker.model;
+package com.example.movie_tracker.model;
 
 import jakarta.persistence.*;
 import java.util.Objects;
