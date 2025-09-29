@@ -1,0 +1,13 @@
+:root {
+  --tmdb-primary: #0d253f;
+  --tmdb-secondary: #01b4e4;
+  --tmdb-tertiary: #90cea1;
+}
+
+footer {
+  background-color: var(--tmdb-primary);
+  color: white;
+}
+a {
+  color: var(--tmdb-secondary);
+}

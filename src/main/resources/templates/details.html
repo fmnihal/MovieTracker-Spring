@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title th:text="${movie.title}">Movie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img th:if="${movie.posterUrl != null}" th:src="${movie.posterUrl}" class="img-fluid"/>
+        </div>
+        <div class="col-md-8">
+            <h2 th:text="${movie.title}">Title</h2>
+            <p><strong>Release:</strong> <span th:text="${movie.releaseDate}"></span></p>
+            <p th:text="${movie.overview}"></p>
+
+            <div sec:authorize="isAuthenticated()">
+                <form th:if="${!isFavorite}" th:action="@{/favorites/{movieId}/add(movieId=${movie.id})}" method="post">
+                    <button class="btn btn-success">Add to favorites</button>
+                </form>
+                <form th:if="${isFavorite}" th:action="@{/favorites/{movieId}/remove(movieId=${movie.id})}" method="post">
+                    <button class="btn btn-danger">Remove from favorites</button>
+                </form>
+            </div>
+            <div sec:authorize="isAnonymous()">
+                <a th:href="@{/login}" class="btn btn-primary">Login to add favorites</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
