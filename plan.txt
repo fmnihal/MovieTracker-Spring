@@ -1,0 +1,124 @@
+Perfect 👌 If you’re sticking with **Spring Boot + Thymeleaf**, you can build the whole app (backend + frontend UI) in one place without needing React or Node. Here’s how you can structure it:
+
+---
+
+## 🔹 Step 1: Setup
+
+* Create a **Spring Boot project** (via [Spring Initializr](https://start.spring.io/))
+  Dependencies:
+
+  * **Spring Web** (controllers, endpoints)
+  * **Spring Security** (login, logout, session)
+  * **Spring Data JPA** (DB access)
+  * **H2 / MySQL / Postgres** (choose a database; H2 is easiest for dev)
+  * **Thymeleaf** (templates for UI)
+
+---
+
+## 🔹 Step 2: Entities (Database Models)
+
+* **User**: `id, username, password (hashed)`
+* **Movie**: `id, title, description, posterUrl, ...`
+* **Favorite**: `id, user_id, movie_id`
+
+---
+
+## 🔹 Step 3: Authentication
+
+* Use **Spring Security** with form login.
+* Configure unique usernames.
+* Store passwords with **BCrypt hashing**.
+* Pages:
+
+  * `/login` (Thymeleaf form for login)
+  * `/register` (new user signup)
+  * `/logout` (Spring Security handles automatically)
+
+---
+
+## 🔹 Step 4: Controllers + Pages
+
+1. **HomeController**
+
+   * Endpoint: `/`
+   * Shows list of movies (fetched from DB).
+   * Thymeleaf page: `home.html`
+
+2. **MovieController**
+
+   * Endpoint: `/movies/{id}`
+   * Shows details of a movie.
+   * Thymeleaf page: `details.html`
+
+3. **FavoritesController**
+
+   * Endpoint: `/favorites`
+   * Shows user’s favorite movies.
+   * `POST /favorites/{id}` to add a movie.
+   * Thymeleaf page: `favorites.html`
+
+4. **ProfileController**
+
+   * Endpoint: `/profile`
+   * Shows user info (username, maybe number of favorites).
+   * Thymeleaf page: `profile.html`
+
+---
+
+## 🔹 Step 5: Movie Data
+
+* Write a **MovieService** that fetches movies once from an external API (e.g., TMDB), saves them to DB.
+* Home + Details pages then read from your **local DB** (not from the API every time).
+
+---
+
+## 🔹 Step 6: Thymeleaf Templates
+
+* `login.html` → form for username/password.
+* `register.html` → form for new account.
+* `home.html` → grid/list of movies.
+* `details.html` → movie details page.
+* `favorites.html` → user’s saved movies.
+* `profile.html` → user info + logout link.
+
+Thymeleaf lets you write normal HTML and sprinkle `th:*` attributes like:
+
+```html
+<a th:href="@{/movies/{id}(id=${movie.id})}">
+   <img th:src="${movie.posterUrl}" alt="Poster"/>
+   <p th:text="${movie.title}"></p>
+</a>
+```
+
+---
+
+## 🔹 Step 7: Logging Out
+
+* With Spring Security + Thymeleaf, you just add:
+
+```html
+<a th:href="@{/logout}">Logout</a>
+```
+
+Spring handles the session cleanup.
+
+---
+
+## 🔹 Step 8: Bonus (Optional Enhancements)
+
+* Add pagination for movies.
+* Add search bar (filter movies).
+* Use Bootstrap or Tailwind for nicer styling.
+
+---
+
+✅ With this setup, you’ll have:
+
+* A **Spring Boot app** that handles both API + UI.
+* A working **login system** with unique usernames.
+* **Pages**: Home, Favorites, Details, Profile, Login, Register.
+* No need for React/Node — Thymeleaf + Spring Security handles everything.
+
+---
+
+Would you like me to draft a **basic project structure (folders + files)** for this so you can see exactly what goes where?
